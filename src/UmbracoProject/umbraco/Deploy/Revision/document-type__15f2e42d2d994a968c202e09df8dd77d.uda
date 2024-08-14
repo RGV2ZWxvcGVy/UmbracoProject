@@ -6,7 +6,7 @@
     "umb://template/e7b744178a3a487eaa17694018a4bed3"
   ],
   "HistoryCleanup": {},
-  "Icon": "icon-notepad",
+  "Icon": "icon-home",
   "Thumbnail": "folder.png",
   "Permissions": {
     "AllowedAtRoot": true,
