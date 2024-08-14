@@ -8,6 +8,7 @@
   "HistoryCleanup": {},
   "Icon": "icon-folder",
   "Thumbnail": "folder.png",
+  "Description": "This is a description",
   "Permissions": {
     "AllowedChildContentTypes": [
       "umb://document-type/5f4000e9d71c41f698cd9cb4796c5b76"
