@@ -8,6 +8,7 @@
   "HistoryCleanup": {},
   "Icon": "icon-notepad",
   "Thumbnail": "folder.png",
+  "Description": "A simple text page",
   "Permissions": {
     "AllowedChildContentTypes": [
       "umb://document-type/0d7c1acfc01c43798ecdcde465a49498"
