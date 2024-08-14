@@ -7,6 +7,12 @@
       "TrialExpireDate": "2024-08-28T09:47:27.0000000",
       "Workspaces": [
         {
+          "Id": "29ba9e5b-18ad-4d54-90bd-ccd3f663a7c8",
+          "Name": "Development",
+          "Type": "development",
+          "Url": "https://dev-marcos-compassionate-giraffe.euwest01.umbraco.io"
+        },
+        {
           "Id": "1f3f9b5f-210c-4e4e-b67b-0aea319b1426",
           "Name": "Live",
           "Type": "live",
