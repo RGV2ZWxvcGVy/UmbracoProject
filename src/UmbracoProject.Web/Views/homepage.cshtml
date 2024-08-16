@@ -4,8 +4,8 @@
 @inject Umbraco.Cms.Web.Common.UmbracoHelper umbracoHelper
 @{
     Layout = "Master.cshtml";
+    var repos = GitHubHelper.GetRepositories("umbraco");
 }
-
 
 <div class="jumbotron d-flex align-items-center">
     <div class="container text-center">
@@ -15,6 +15,7 @@
 
     </div>
 </div>
+
 <!-- Features Section-->
 <section id="features" class="bg-white">
     <div class="container">
@@ -125,26 +126,35 @@
                 <div class="col-md-12">
                     <div class="row align-items-center text-white">
                         <div class="col-md-4 offset-md-2 col-sm-6">
-                            @if(Model.Value("yourName") != "" && Model.Value("yourName") != null){
-                            <h4 class="mb-4">@Model.Value("yourName") proudly presents: this site!</h4>
-                            }else{
-                            <h4 class="mb-4">Your name could be here!</h4>
+                            @if (Model.Value("yourName") != "" && Model.Value("yourName") != null)
+                            {
+                                <h4 class="mb-4">@Model.Value("yourName") proudly presents: this site!</h4>
                             }
-                            @if(Model.Value("yourDescription") != "" && Model.Value("yourDescription") != null){
-                            <p>@Model.Value("yourDescription")</p>
-                            }else{
-                            <p>A few paragraphs about yourself, perhaps?</p>
+                            else
+                            {
+                                <h4 class="mb-4">Your name could be here!</h4>
+                            }
+                            @if (Model.Value("yourDescription") != "" && Model.Value("yourDescription") != null)
+                            {
+                                <p>@Model.Value("yourDescription")</p>
+                            }
+                            else
+                            {
+                                <p>A few paragraphs about yourself, perhaps?</p>
                             }
                         </div>
-                        @if(Model.Value("yourBeautifulFace") != null){
-                        var img = Model.Value<IPublishedContent>("yourBeautifulFace");
-                        <div class="col-md-4 offset-md-right-2 col-sm-6">
-                            <img class="my-5 img-circle" src="@img.Url()" alt="">
-                        </div>
-                        }else{
-                        <div class="col-md-4 offset-md-right-2 col-sm-6">
-                            <img class="my-5 img-circle" src="https://via.placeholder.com/350x350" alt="">
-                        </div>
+                        @if (Model.Value("yourBeautifulFace") != null)
+                        {
+                            var img = Model.Value<IPublishedContent>("yourBeautifulFace");
+                            <div class="col-md-4 offset-md-right-2 col-sm-6">
+                                <img class="my-5 img-circle" src="@img.Url()" alt="">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-4 offset-md-right-2 col-sm-6">
+                                <img class="my-5 img-circle" src="https://via.placeholder.com/350x350" alt="">
+                            </div>
                         }
                     </div>
                 </div>
@@ -159,7 +169,7 @@
         <div class="section-content">
             <div class="row ">
                 <div class="col-md-12">
- 
+
                     <div class="title-wrap mb-5 above">
                         <h2>Our partners</h2>
                     </div>
@@ -170,25 +180,30 @@
 
                     <div class="client-slider owl-carousel">
 
-                        @if(Model.Value("companyLogos") !=null && Model.Value<IEnumerable<IPublishedContent>>("companyLogos").Any()){
+                        @if (Model.Value("companyLogos") != null && Model.Value<IEnumerable<IPublishedContent>>("companyLogos").Any())
+                        {
 
-                        foreach(var logo in Model.Value<IEnumerable<IPublishedContent>>("companyLogos")){
-                        <div class="client-item">
-                            <img class="img-responsive" src="@logo.Url()" alt=" ">
-                        </div>
-                        }
-                        }
-                        else{
-                        <div class="client-item">
-                            <!-- Alternatively you could do Umbraco.Media(Guid.Parse("b8dc67f9b88e4d79acf2246ffcc77d09")) to get a media item but the picker approach is safer -->
-                                @if(Model.Value<IEnumerable<IPublishedContent>>("umbracoLogos") !=null && Model.Value<IEnumerable<IPublishedContent>>("umbracoLogos").Any()){
-                                var imgLogo = Model.Value<IEnumerable<IPublishedContent>>("umbracoLogos").FirstOrDefault();
-                            <img class="img-responsive" src="@imgLogo.Url()" alt=" ">
+                            foreach (var logo in Model.Value<IEnumerable<IPublishedContent>>("companyLogos"))
+                            {
+                                <div class="client-item">
+                                    <img class="img-responsive" src="@logo.Url()" alt=" ">
+                                </div>
                             }
-                            else{
-                            <img class="img-responsive" src="https://umbraco.com/media/kloklj32/umbraco_logo_white_05_preview.png?quality=80" alt=" ">
-                            }
-                        </div>
+                        }
+                        else
+                        {
+                            <div class="client-item">
+                                <!-- Alternatively you could do Umbraco.Media(Guid.Parse("b8dc67f9b88e4d79acf2246ffcc77d09")) to get a media item but the picker approach is safer -->
+                                @if (Model.Value<IEnumerable<IPublishedContent>>("umbracoLogos") != null && Model.Value<IEnumerable<IPublishedContent>>("umbracoLogos").Any())
+                                {
+                                    var imgLogo = Model.Value<IEnumerable<IPublishedContent>>("umbracoLogos").FirstOrDefault();
+                                    <img class="img-responsive" src="@imgLogo.Url()" alt=" ">
+                                }
+                                else
+                                {
+                                    <img class="img-responsive" src="https://umbraco.com/media/kloklj32/umbraco_logo_white_05_preview.png?quality=80" alt=" ">
+                                }
+                            </div>
                         }
                     </div>
                     <!-- End of Client Holder -->
@@ -196,4 +211,24 @@
             </div>
         </div>
 </section>
+
+<section class="overlay bg-fixed">
+    <div class="container">
+        <div class="section-content">
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="title-wrap mb-5 above">
+                        <h2>Our repositories</h2>
+                    </div>
+
+                    @foreach (var repo in repos)
+                    {
+                        <h1>@repo.FullName</h1>
+                        <p>@repo.Description</p>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
+</section>
+</div>
