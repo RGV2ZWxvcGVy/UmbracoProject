@@ -5,6 +5,7 @@
   "HistoryCleanup": {},
   "Icon": "icon-diamond",
   "Thumbnail": "folder.png",
+  "Description": "This doc type is creating a collision",
   "Permissions": {
     "AllowedChildContentTypes": []
   },
