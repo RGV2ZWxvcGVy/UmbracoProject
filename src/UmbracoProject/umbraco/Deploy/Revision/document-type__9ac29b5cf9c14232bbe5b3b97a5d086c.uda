@@ -3,7 +3,7 @@
   "Alias": "collision",
   "AllowedTemplates": [],
   "HistoryCleanup": {},
-  "Icon": "icon-document",
+  "Icon": "icon-diamond",
   "Thumbnail": "folder.png",
   "Permissions": {
     "AllowedChildContentTypes": []
